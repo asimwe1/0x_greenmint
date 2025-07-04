@@ -1,0 +1,22 @@
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring root project 'GreenMintAPI'.
+> Could not resolve all artifacts for configuration ':classpath'.
+   > Could not find tech.pegasys:jc-kzg-4844:0.8.0.
+     Searched in the following locations:
+       - file:/C:/Users/user/.m2/repository/tech/pegasys/jc-kzg-4844/0.8.0/jc-kzg-4844-0.8.0.pom
+       - https://plugins.gradle.org/m2/tech/pegasys/jc-kzg-4844/0.8.0/jc-kzg-4844-0.8.0.pom
+       - https://hyperledger.jfrog.io/hyperledger/besu-maven/tech/pegasys/jc-kzg-4844/0.8.0/jc-kzg-4844-0.8.0.pom
+       - https://splunk.jfrog.io/splunk/ext-releases-local/tech/pegasys/jc-kzg-4844/0.8.0/jc-kzg-4844-0.8.0.pom
+     Required by:
+         project : > org.web3j.openapi:org.web3j.openapi.gradle.plugin:4.11.2 > org.web3j.openapi:web3j-openapi-gradle-plugin:4.11.2 > org.web3j:web3j-gradle-plugin:4.11.2 > org.web3j:core:4.11.2 > org.web3j:crypto:4.11.2
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 7s
