@@ -3,13 +3,16 @@ pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/governance/Governor.sol";
 import "@openzeppelin/contracts/governance/extensions/GovernorVotes.sol";
+import "@openzeppelin/contracts/governance/extensions/GovernorCountingSimple.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/governance/IGovernor.sol";
 
 // Manages decentralized governance for GreenMint App
-contract GovernanceContract is Governor, GovernorVotes {
+contract GovernanceContract is Governor, GovernorVotes, GovernorCountingSimple {
     constructor(IVotes _nftContract) 
         Governor("GreenMintGovernance") 
-        GovernorVotes(_nftContract) 
+        GovernorVotes(_nftContract)
+        GovernorCountingSimple()
     {}
 
     // Proposes a governance action
@@ -38,14 +41,14 @@ contract GovernanceContract is Governor, GovernorVotes {
     function getVotes(address account, uint256 blockNumber) 
         public 
         view 
-        override(Governor, GovernorVotes) 
+        override
         returns (uint256) 
     {
         return super.getVotes(account, blockNumber);
     }
 
     // Returns the vote counting mode
-    function COUNTING_MODE() public pure override returns (string memory) {
+    function COUNTING_MODE() public pure override(IGovernor, GovernorCountingSimple) returns (string memory) {
         return "support=bravo&quorum=for";
     }
 
@@ -56,25 +59,20 @@ contract GovernanceContract is Governor, GovernorVotes {
         uint8 support,
         uint256 weight,
         bytes memory /* params */
-    ) internal override {
-        _countVote(proposalId, account, support, weight);
+    ) internal override(Governor, GovernorCountingSimple) {
+        super._countVote(proposalId, account, support, weight, bytes(""));
     }
 
     // Internal function to check if quorum is reached
-    function _quorumReached(uint256 proposalId) internal view override returns (bool) {
-        uint256 votesFor = proposalSnapshot(proposalId);
-        return votesFor >= quorum(blockNumber());
+    function _quorumReached(uint256 proposalId) internal view override(Governor, GovernorCountingSimple) returns (bool) {
+        (uint256 againstVotes, uint256 forVotes, uint256 abstainVotes) = proposalVotes(proposalId);
+        uint256 totalVotes = forVotes + againstVotes + abstainVotes;
+        return totalVotes >= quorum(block.number);
     }
 
     // Internal function to check if vote succeeded
-    function _voteSucceeded(uint256 proposalId) internal view override returns (bool) {
-        uint256 votesFor = proposalVotes(proposalId).forVotes;
-        uint256 votesAgainst = proposalVotes(proposalId).againstVotes;
-        return votesFor > votesAgainst;
-    }
-
-    // Check if an account has voted on a proposal
-    function hasVoted(uint256 proposalId, address account) public view override returns (bool) {
-        return _hasVoted(proposalId, account);
+    function _voteSucceeded(uint256 proposalId) internal view override(Governor, GovernorCountingSimple) returns (bool) {
+        (uint256 againstVotes, uint256 forVotes, ) = proposalVotes(proposalId);
+        return forVotes > againstVotes;
     }
 }

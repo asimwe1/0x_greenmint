@@ -28,6 +28,11 @@ contract LeaderboardContract {
         // Simplified ranking logic (update topUsers off-chain for gas efficiency)
     }
 
+    // Retrieves user score for a challenge
+    function getUserScore(uint256 _challengeId, address _user) external view returns (uint256) {
+        return challenges[_challengeId].userScores[_user];
+    }
+
     // Retrieves top users for a challenge
     function getTopUsers(uint256 _challengeId) external view returns (address[] memory) {
         return challenges[_challengeId].topUsers;

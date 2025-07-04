@@ -41,7 +41,7 @@ describe("GreenMint Contracts", function () {
     leaderboard = await LeaderboardContract.deploy(await carbonTracking.getAddress());
     await leaderboard.waitForDeployment();
 
-    const PaymentContract = await ethers.getContractFactory("PaymentContract");
+    const PaymentContract = await ethers.getContractFactory("MutablePaymentSplitter");
     payment = await PaymentContract.deploy(payees, shares);
     await payment.waitForDeployment();
 
@@ -92,15 +92,15 @@ describe("GreenMint Contracts", function () {
 
   it("should update score in LeaderboardContract", async function () {
     await leaderboard.updateScore(1, await user.getAddress(), 1000);
-    expect(await leaderboard.challenges(1).userScores(await user.getAddress())).to.equal(1000);
+    expect(await leaderboard.getUserScore(1, await user.getAddress())).to.equal(1000);
   });
 
   it("should add payee and release payment in PaymentContract", async function () {
     await payment.addPayee(await user.getAddress(), 25);
-    await payment.sendTransaction({ value: ethers.parseEther("1") });
-    const initialBalance: BigNumber = await user.getBalance();
+    await deployer.sendTransaction({ to: await payment.getAddress(), value: ethers.parseEther("1") });
+    const initialBalance: BigNumber = await ethers.provider.getBalance(await user.getAddress()); // Updated
     await payment.release(await user.getAddress());
-    const finalBalance: BigNumber = await user.getBalance();
+    const finalBalance: BigNumber = await ethers.provider.getBalance(await user.getAddress()); // Updated
     expect(finalBalance).to.be.gt(initialBalance);
   });
 
