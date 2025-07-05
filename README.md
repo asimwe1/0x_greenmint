@@ -50,3 +50,35 @@ npx hardhat node
 
 ## License
 MIT
+
+## API Documentation with OpenAPI & Redoc
+
+### Generating OpenAPI JSON
+
+1. **Compile contracts to generate ABIs:**
+   ```bash
+   npx hardhat compile
+   ```
+2. **Generate OpenAPI JSON from ABIs:**
+   ```bash
+   node scripts/generateOpenApi.js
+   ```
+   This will create/update `openapi.json` in the project root.
+
+### Visualizing the API Docs with Redoc
+
+> **Recommended:** Use the new Redocly CLI for serving OpenAPI docs.
+
+1. **Install Redocly CLI (if not already):**
+   ```bash
+   npm install -D @redocly/cli
+   ```
+2. **Serve the OpenAPI docs locally:**
+   ```bash
+   npx @redocly/cli preview-docs openapi.json
+   ```
+   This will start a local server (default: http://localhost:8080) where you can view and share the API documentation.
+
+---
+
+**This process makes it easy for both backend and frontend developers to understand and integrate with the smart contract APIs.**

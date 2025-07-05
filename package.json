@@ -3,7 +3,8 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^6.0.0",
     "ethereum-waffle": "^4.0.10",
-    "hardhat": "^2.25.0"
+    "hardhat": "^2.25.0",
+    "redoc-cli": "^0.13.21"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.6",

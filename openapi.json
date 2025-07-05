@@ -1,0 +1,5502 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Smart Contracts API",
+    "version": "1.0.0",
+    "description": "Auto-generated OpenAPI documentation for Solidity contracts."
+  },
+  "paths": {
+    "/CarbonTrackingContract/getUserActivities": {
+      "post": {
+        "summary": "Call getUserActivities on CarbonTrackingContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonTrackingContract/recordActivity": {
+      "post": {
+        "summary": "Call recordActivity on CarbonTrackingContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_carbonSaved",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "_activityType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          },
+          {
+            "name": "_verified",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "bool"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonTrackingContract/userActivities": {
+      "post": {
+        "summary": "Call userActivities on CarbonTrackingContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "string"
+                    },
+                    "carbonSaved": {
+                      "type": "integer"
+                    },
+                    "activityType": {
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "type": "integer"
+                    },
+                    "verified": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/ADMIN_ROLE": {
+      "post": {
+        "summary": "Call ADMIN_ROLE on ChallengeManagementContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/DEFAULT_ADMIN_ROLE": {
+      "post": {
+        "summary": "Call DEFAULT_ADMIN_ROLE on ChallengeManagementContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/challengeCount": {
+      "post": {
+        "summary": "Call challengeCount on ChallengeManagementContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/challenges": {
+      "post": {
+        "summary": "Call challenges on ChallengeManagementContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "challengeId": {
+                      "type": "integer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "startTime": {
+                      "type": "integer"
+                    },
+                    "endTime": {
+                      "type": "integer"
+                    },
+                    "isActive": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/createChallenge": {
+      "post": {
+        "summary": "Call createChallenge on ChallengeManagementContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_description",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          },
+          {
+            "name": "_duration",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/endChallenge": {
+      "post": {
+        "summary": "Call endChallenge on ChallengeManagementContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_challengeId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/getRoleAdmin": {
+      "post": {
+        "summary": "Call getRoleAdmin on ChallengeManagementContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/grantRole": {
+      "post": {
+        "summary": "Call grantRole on ChallengeManagementContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/hasRole": {
+      "post": {
+        "summary": "Call hasRole on ChallengeManagementContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/renounceRole": {
+      "post": {
+        "summary": "Call renounceRole on ChallengeManagementContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/revokeRole": {
+      "post": {
+        "summary": "Call revokeRole on ChallengeManagementContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on ChallengeManagementContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/BALLOT_TYPEHASH": {
+      "post": {
+        "summary": "Call BALLOT_TYPEHASH on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/CLOCK_MODE": {
+      "post": {
+        "summary": "Call CLOCK_MODE on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/COUNTING_MODE": {
+      "post": {
+        "summary": "Call COUNTING_MODE on GovernanceContract",
+        "description": "State mutability: pure",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/EXTENDED_BALLOT_TYPEHASH": {
+      "post": {
+        "summary": "Call EXTENDED_BALLOT_TYPEHASH on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/cancel": {
+      "post": {
+        "summary": "Call cancel on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "targets",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "address[]"
+          },
+          {
+            "name": "values",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          },
+          {
+            "name": "calldatas",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "bytes[]"
+          },
+          {
+            "name": "descriptionHash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/castVote": {
+      "post": {
+        "summary": "Call castVote on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "support",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/castVoteBySig": {
+      "post": {
+        "summary": "Call castVoteBySig on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "support",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          },
+          {
+            "name": "v",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          },
+          {
+            "name": "r",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "s",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/castVoteWithReason": {
+      "post": {
+        "summary": "Call castVoteWithReason on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "support",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/castVoteWithReasonAndParams": {
+      "post": {
+        "summary": "Call castVoteWithReasonAndParams on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "support",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          },
+          {
+            "name": "params",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/castVoteWithReasonAndParamsBySig": {
+      "post": {
+        "summary": "Call castVoteWithReasonAndParamsBySig on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "support",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          },
+          {
+            "name": "params",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          },
+          {
+            "name": "v",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          },
+          {
+            "name": "r",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "s",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/clock": {
+      "post": {
+        "summary": "Call clock on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/eip712Domain": {
+      "post": {
+        "summary": "Call eip712Domain on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fields": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "chainId": {
+                      "type": "integer"
+                    },
+                    "verifyingContract": {
+                      "type": "string"
+                    },
+                    "salt": {
+                      "type": "string"
+                    },
+                    "extensions": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/execute": {
+      "post": {
+        "summary": "Call execute on GovernanceContract",
+        "description": "State mutability: payable",
+        "parameters": [
+          {
+            "name": "targets",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "address[]"
+          },
+          {
+            "name": "values",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          },
+          {
+            "name": "calldatas",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "bytes[]"
+          },
+          {
+            "name": "descriptionHash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/getVotes": {
+      "post": {
+        "summary": "Call getVotes on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "blockNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/getVotesWithParams": {
+      "post": {
+        "summary": "Call getVotesWithParams on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "timepoint",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "params",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/hasVoted": {
+      "post": {
+        "summary": "Call hasVoted on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/hashProposal": {
+      "post": {
+        "summary": "Call hashProposal on GovernanceContract",
+        "description": "State mutability: pure",
+        "parameters": [
+          {
+            "name": "targets",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "address[]"
+          },
+          {
+            "name": "values",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          },
+          {
+            "name": "calldatas",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "bytes[]"
+          },
+          {
+            "name": "descriptionHash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/name": {
+      "post": {
+        "summary": "Call name on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/onERC1155BatchReceived": {
+      "post": {
+        "summary": "Call onERC1155BatchReceived on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/onERC1155Received": {
+      "post": {
+        "summary": "Call onERC1155Received on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/onERC721Received": {
+      "post": {
+        "summary": "Call onERC721Received on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/proposalDeadline": {
+      "post": {
+        "summary": "Call proposalDeadline on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/proposalProposer": {
+      "post": {
+        "summary": "Call proposalProposer on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/proposalSnapshot": {
+      "post": {
+        "summary": "Call proposalSnapshot on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/proposalThreshold": {
+      "post": {
+        "summary": "Call proposalThreshold on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/proposalVotes": {
+      "post": {
+        "summary": "Call proposalVotes on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "againstVotes": {
+                      "type": "integer"
+                    },
+                    "forVotes": {
+                      "type": "integer"
+                    },
+                    "abstainVotes": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/propose": {
+      "post": {
+        "summary": "Call propose on GovernanceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "targets",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "address[]"
+          },
+          {
+            "name": "values",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          },
+          {
+            "name": "calldatas",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "bytes[]"
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/quorum": {
+      "post": {
+        "summary": "Call quorum on GovernanceContract",
+        "description": "State mutability: pure",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/relay": {
+      "post": {
+        "summary": "Call relay on GovernanceContract",
+        "description": "State mutability: payable",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "data",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/state": {
+      "post": {
+        "summary": "Call state on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/token": {
+      "post": {
+        "summary": "Call token on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/version": {
+      "post": {
+        "summary": "Call version on GovernanceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/votingDelay": {
+      "post": {
+        "summary": "Call votingDelay on GovernanceContract",
+        "description": "State mutability: pure",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GovernanceContract/votingPeriod": {
+      "post": {
+        "summary": "Call votingPeriod on GovernanceContract",
+        "description": "State mutability: pure",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/LeaderboardContract/carbonTrackingContract": {
+      "post": {
+        "summary": "Call carbonTrackingContract on LeaderboardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/LeaderboardContract/challenges": {
+      "post": {
+        "summary": "Call challenges on LeaderboardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/LeaderboardContract/getTopUsers": {
+      "post": {
+        "summary": "Call getTopUsers on LeaderboardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "_challengeId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/LeaderboardContract/getUserScore": {
+      "post": {
+        "summary": "Call getUserScore on LeaderboardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "_challengeId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/LeaderboardContract/updateScore": {
+      "post": {
+        "summary": "Call updateScore on LeaderboardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_challengeId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_carbonSaved",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/ADMINISTRATOR_ROLE": {
+      "post": {
+        "summary": "Call ADMINISTRATOR_ROLE on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/CLOCK_MODE": {
+      "post": {
+        "summary": "Call CLOCK_MODE on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/DEFAULT_ADMIN_ROLE": {
+      "post": {
+        "summary": "Call DEFAULT_ADMIN_ROLE on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/DOMAIN_SEPARATOR": {
+      "post": {
+        "summary": "Call DOMAIN_SEPARATOR on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/approve": {
+      "post": {
+        "summary": "Call approve on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/balanceOf": {
+      "post": {
+        "summary": "Call balanceOf on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/burn": {
+      "post": {
+        "summary": "Call burn on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/clock": {
+      "post": {
+        "summary": "Call clock on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/delegate": {
+      "post": {
+        "summary": "Call delegate on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "delegatee",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/delegateBySig": {
+      "post": {
+        "summary": "Call delegateBySig on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "delegatee",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "nonce",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "expiry",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "v",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          },
+          {
+            "name": "r",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "s",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/delegates": {
+      "post": {
+        "summary": "Call delegates on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/eip712Domain": {
+      "post": {
+        "summary": "Call eip712Domain on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fields": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "chainId": {
+                      "type": "integer"
+                    },
+                    "verifyingContract": {
+                      "type": "string"
+                    },
+                    "salt": {
+                      "type": "string"
+                    },
+                    "extensions": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/getApproved": {
+      "post": {
+        "summary": "Call getApproved on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/getPastTotalSupply": {
+      "post": {
+        "summary": "Call getPastTotalSupply on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "timepoint",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/getPastVotes": {
+      "post": {
+        "summary": "Call getPastVotes on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "timepoint",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/getRoleAdmin": {
+      "post": {
+        "summary": "Call getRoleAdmin on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/getVotes": {
+      "post": {
+        "summary": "Call getVotes on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/grantRole": {
+      "post": {
+        "summary": "Call grantRole on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/hasRole": {
+      "post": {
+        "summary": "Call hasRole on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/isApprovedForAll": {
+      "post": {
+        "summary": "Call isApprovedForAll on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "operator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/mintNFT": {
+      "post": {
+        "summary": "Call mintNFT on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "recipient",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_tokenUri",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/name": {
+      "post": {
+        "summary": "Call name on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/nonces": {
+      "post": {
+        "summary": "Call nonces on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/ownerOf": {
+      "post": {
+        "summary": "Call ownerOf on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/renounceRole": {
+      "post": {
+        "summary": "Call renounceRole on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/revokeRole": {
+      "post": {
+        "summary": "Call revokeRole on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/safeTransferFrom": {
+      "post": {
+        "summary": "Call safeTransferFrom on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "data",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/setApprovalForAll": {
+      "post": {
+        "summary": "Call setApprovalForAll on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "operator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "approved",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "bool"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/symbol": {
+      "post": {
+        "summary": "Call symbol on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/tokenURI": {
+      "post": {
+        "summary": "Call tokenURI on NFTRewardContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NFTRewardContract/transferFrom": {
+      "post": {
+        "summary": "Call transferFrom on NFTRewardContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/addPayee": {
+      "post": {
+        "summary": "Call addPayee on MutablePaymentSplitter",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "shares_",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/getPayees": {
+      "post": {
+        "summary": "Call getPayees on MutablePaymentSplitter",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/owner": {
+      "post": {
+        "summary": "Call owner on MutablePaymentSplitter",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/payee": {
+      "post": {
+        "summary": "Call payee on MutablePaymentSplitter",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "index",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/pendingPayment": {
+      "post": {
+        "summary": "Call pendingPayment on MutablePaymentSplitter",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/release": {
+      "post": {
+        "summary": "Call release on MutablePaymentSplitter",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address payable"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/released": {
+      "post": {
+        "summary": "Call released on MutablePaymentSplitter",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/removePayee": {
+      "post": {
+        "summary": "Call removePayee on MutablePaymentSplitter",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/renounceOwnership": {
+      "post": {
+        "summary": "Call renounceOwnership on MutablePaymentSplitter",
+        "description": "State mutability: nonpayable",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/shares": {
+      "post": {
+        "summary": "Call shares on MutablePaymentSplitter",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/totalReleased": {
+      "post": {
+        "summary": "Call totalReleased on MutablePaymentSplitter",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/totalShares": {
+      "post": {
+        "summary": "Call totalShares on MutablePaymentSplitter",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MutablePaymentSplitter/transferOwnership": {
+      "post": {
+        "summary": "Call transferOwnership on MutablePaymentSplitter",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "newOwner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/ADMIN_ROLE": {
+      "post": {
+        "summary": "Call ADMIN_ROLE on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/DEFAULT_ADMIN_ROLE": {
+      "post": {
+        "summary": "Call DEFAULT_ADMIN_ROLE on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/challengeRewards": {
+      "post": {
+        "summary": "Call challengeRewards on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/depositNFTs": {
+      "post": {
+        "summary": "Call depositNFTs on RewardPoolContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_challengeId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "_tokenIds",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/distributeReward": {
+      "post": {
+        "summary": "Call distributeReward on RewardPoolContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_challengeId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "_recipient",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/getRoleAdmin": {
+      "post": {
+        "summary": "Call getRoleAdmin on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/grantRole": {
+      "post": {
+        "summary": "Call grantRole on RewardPoolContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/hasRole": {
+      "post": {
+        "summary": "Call hasRole on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/nftContract": {
+      "post": {
+        "summary": "Call nftContract on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/renounceRole": {
+      "post": {
+        "summary": "Call renounceRole on RewardPoolContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/revokeRole": {
+      "post": {
+        "summary": "Call revokeRole on RewardPoolContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SolanaAdapterContract/syncToSolana": {
+      "post": {
+        "summary": "Call syncToSolana on SolanaAdapterContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_data",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfileContract/addCarbonSaved": {
+      "post": {
+        "summary": "Call addCarbonSaved on UserProfileContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_carbonSaved",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfileContract/updateProfile": {
+      "post": {
+        "summary": "Call updateProfile on UserProfileContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_carModel",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          },
+          {
+            "name": "_fuelConsumption",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfileContract/userProfiles": {
+      "post": {
+        "summary": "Call userProfiles on UserProfileContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "carModel": {
+                      "type": "string"
+                    },
+                    "fuelConsumption": {
+                      "type": "integer"
+                    },
+                    "totalCarbonSaved": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/DEFAULT_ADMIN_ROLE": {
+      "post": {
+        "summary": "Call DEFAULT_ADMIN_ROLE on VerificationContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/VERIFIER_ROLE": {
+      "post": {
+        "summary": "Call VERIFIER_ROLE on VerificationContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/approveVerification": {
+      "post": {
+        "summary": "Call approveVerification on VerificationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_verificationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/getRoleAdmin": {
+      "post": {
+        "summary": "Call getRoleAdmin on VerificationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/grantRole": {
+      "post": {
+        "summary": "Call grantRole on VerificationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/hasRole": {
+      "post": {
+        "summary": "Call hasRole on VerificationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/renounceRole": {
+      "post": {
+        "summary": "Call renounceRole on VerificationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/revokeRole": {
+      "post": {
+        "summary": "Call revokeRole on VerificationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/submitVerification": {
+      "post": {
+        "summary": "Call submitVerification on VerificationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_activityId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "_ipfsHash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on VerificationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/verificationCount": {
+      "post": {
+        "summary": "Call verificationCount on VerificationContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/verifications": {
+      "post": {
+        "summary": "Call verifications on VerificationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "string"
+                    },
+                    "activityId": {
+                      "type": "integer"
+                    },
+                    "ipfsHash": {
+                      "type": "string"
+                    },
+                    "isVerified": {
+                      "type": "boolean"
+                    },
+                    "verifier": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "CarbonTrackingContract"
+    },
+    {
+      "name": "ChallengeManagementContract"
+    },
+    {
+      "name": "GovernanceContract"
+    },
+    {
+      "name": "LeaderboardContract"
+    },
+    {
+      "name": "NFTRewardContract"
+    },
+    {
+      "name": "MutablePaymentSplitter"
+    },
+    {
+      "name": "RewardPoolContract"
+    },
+    {
+      "name": "SolanaAdapterContract"
+    },
+    {
+      "name": "UserProfileContract"
+    },
+    {
+      "name": "VerificationContract"
+    }
+  ],
+  "components": {},
+  "x_events": {
+    "CarbonTrackingContract": [
+      {
+        "summary": "Event: ActivityLogged",
+        "description": "Emitted when ActivityLogged occurs.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "carbonSaved",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "activityType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ]
+      }
+    ],
+    "ChallengeManagementContract": [
+      {
+        "summary": "Event: RoleAdminChanged",
+        "description": "Emitted when RoleAdminChanged occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "previousAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "newAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleGranted",
+        "description": "Emitted when RoleGranted occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleRevoked",
+        "description": "Emitted when RoleRevoked occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      }
+    ],
+    "GovernanceContract": [
+      {
+        "summary": "Event: EIP712DomainChanged",
+        "description": "Emitted when EIP712DomainChanged occurs.",
+        "parameters": []
+      },
+      {
+        "summary": "Event: ProposalCanceled",
+        "description": "Emitted when ProposalCanceled occurs.",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: ProposalCreated",
+        "description": "Emitted when ProposalCreated occurs.",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "proposer",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "targets",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "address[]"
+          },
+          {
+            "name": "values",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          },
+          {
+            "name": "signatures",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "string[]"
+          },
+          {
+            "name": "calldatas",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "bytes[]"
+          },
+          {
+            "name": "voteStart",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "voteEnd",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ]
+      },
+      {
+        "summary": "Event: ProposalExecuted",
+        "description": "Emitted when ProposalExecuted occurs.",
+        "parameters": [
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: VoteCast",
+        "description": "Emitted when VoteCast occurs.",
+        "parameters": [
+          {
+            "name": "voter",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "support",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          },
+          {
+            "name": "weight",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ]
+      },
+      {
+        "summary": "Event: VoteCastWithParams",
+        "description": "Emitted when VoteCastWithParams occurs.",
+        "parameters": [
+          {
+            "name": "voter",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "proposalId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "support",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint8"
+          },
+          {
+            "name": "weight",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          },
+          {
+            "name": "params",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ]
+      }
+    ],
+    "NFTRewardContract": [
+      {
+        "summary": "Event: Approval",
+        "description": "Emitted when Approval occurs.",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "approved",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: ApprovalForAll",
+        "description": "Emitted when ApprovalForAll occurs.",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "operator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "approved",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "bool"
+          }
+        ]
+      },
+      {
+        "summary": "Event: BatchMetadataUpdate",
+        "description": "Emitted when BatchMetadataUpdate occurs.",
+        "parameters": [
+          {
+            "name": "_fromTokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "_toTokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: DelegateChanged",
+        "description": "Emitted when DelegateChanged occurs.",
+        "parameters": [
+          {
+            "name": "delegator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "fromDelegate",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "toDelegate",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: DelegateVotesChanged",
+        "description": "Emitted when DelegateVotesChanged occurs.",
+        "parameters": [
+          {
+            "name": "delegate",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "previousBalance",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "newBalance",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: EIP712DomainChanged",
+        "description": "Emitted when EIP712DomainChanged occurs.",
+        "parameters": []
+      },
+      {
+        "summary": "Event: MetadataUpdate",
+        "description": "Emitted when MetadataUpdate occurs.",
+        "parameters": [
+          {
+            "name": "_tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleAdminChanged",
+        "description": "Emitted when RoleAdminChanged occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "previousAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "newAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleGranted",
+        "description": "Emitted when RoleGranted occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleRevoked",
+        "description": "Emitted when RoleRevoked occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: Transfer",
+        "description": "Emitted when Transfer occurs.",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "tokenId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      }
+    ],
+    "MutablePaymentSplitter": [
+      {
+        "summary": "Event: OwnershipTransferred",
+        "description": "Emitted when OwnershipTransferred occurs.",
+        "parameters": [
+          {
+            "name": "previousOwner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "newOwner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: PayeeAdded",
+        "description": "Emitted when PayeeAdded occurs.",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "shares",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: PayeeRemoved",
+        "description": "Emitted when PayeeRemoved occurs.",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: PaymentReceived",
+        "description": "Emitted when PaymentReceived occurs.",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: PaymentReleased",
+        "description": "Emitted when PaymentReleased occurs.",
+        "parameters": [
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      }
+    ],
+    "RewardPoolContract": [
+      {
+        "summary": "Event: RoleAdminChanged",
+        "description": "Emitted when RoleAdminChanged occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "previousAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "newAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleGranted",
+        "description": "Emitted when RoleGranted occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleRevoked",
+        "description": "Emitted when RoleRevoked occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      }
+    ],
+    "SolanaAdapterContract": [
+      {
+        "summary": "Event: DataSyncedToSolana",
+        "description": "Emitted when DataSyncedToSolana occurs.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "data",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes"
+          }
+        ]
+      }
+    ],
+    "VerificationContract": [
+      {
+        "summary": "Event: RoleAdminChanged",
+        "description": "Emitted when RoleAdminChanged occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "previousAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "newAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleGranted",
+        "description": "Emitted when RoleGranted occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleRevoked",
+        "description": "Emitted when RoleRevoked occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: VerificationApproved",
+        "description": "Emitted when VerificationApproved occurs.",
+        "parameters": [
+          {
+            "name": "verificationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "verifier",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: VerificationSubmitted",
+        "description": "Emitted when VerificationSubmitted occurs.",
+        "parameters": [
+          {
+            "name": "verificationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "ipfsHash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ]
+      }
+    ]
+  },
+  "x_errors": {
+    "GovernanceContract": [
+      {
+        "summary": "Error: Empty",
+        "description": "Error Empty",
+        "parameters": []
+      },
+      {
+        "summary": "Error: InvalidShortString",
+        "description": "Error InvalidShortString",
+        "parameters": []
+      },
+      {
+        "summary": "Error: StringTooLong",
+        "description": "Error StringTooLong",
+        "parameters": [
+          {
+            "name": "str",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ]
+      }
+    ],
+    "NFTRewardContract": [
+      {
+        "summary": "Error: InvalidShortString",
+        "description": "Error InvalidShortString",
+        "parameters": []
+      },
+      {
+        "summary": "Error: StringTooLong",
+        "description": "Error StringTooLong",
+        "parameters": [
+          {
+            "name": "str",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ]
+      }
+    ]
+  }
+}
