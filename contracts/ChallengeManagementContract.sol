@@ -2,37 +2,46 @@
 pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
+import "./CarbonTrackingContract.sol";
 
-// Manages challenges for GreenMint App
 contract ChallengeManagementContract is AccessControl {
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
+    address public backendAddress;
+    CarbonTrackingContract public carbonTrackingContract;
 
-    // Struct to store challenge details
     struct Challenge {
         uint256 challengeId;
-        string description; // IPFS URI for challenge details
+        string description;
         uint256 startTime;
         uint256 endTime;
         bool isActive;
+        bool isMarketplaceChallenge;
     }
 
-    // Mapping to store challenges
     mapping(uint256 => Challenge) public challenges;
     uint256 public challengeCount;
 
-    constructor() {
+    constructor(address _backendAddress, address _carbonTrackingContract) {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(ADMIN_ROLE, msg.sender);
+        backendAddress = _backendAddress;
+        carbonTrackingContract = CarbonTrackingContract(_carbonTrackingContract);
     }
 
-    // Creates a new challenge
-    function createChallenge(string memory _description, uint256 _duration) external onlyRole(ADMIN_ROLE) {
-        challengeCount++;
-        challenges[challengeCount] = Challenge(challengeCount, _description, block.timestamp, block.timestamp + _duration, true);
+    function createChallenges(Challenge[] memory _challenges) external onlyRole(ADMIN_ROLE) {
+        require(msg.sender == backendAddress, "Only backend can create");
+        for (uint256 i = 0; i < _challenges.length; i++) {
+            challengeCount++;
+            challenges[challengeCount] = _challenges[i];
+            challenges[challengeCount].challengeId = challengeCount;
+            challenges[challengeCount].startTime = block.timestamp;
+            challenges[challengeCount].endTime = block.timestamp + _challenges[i].endTime;
+            challenges[challengeCount].isActive = true;
+        }
     }
 
-    // Updates challenge status
     function endChallenge(uint256 _challengeId) external onlyRole(ADMIN_ROLE) {
+        require(msg.sender == backendAddress, "Only backend can end");
         require(challenges[_challengeId].isActive, "Challenge already ended");
         challenges[_challengeId].isActive = false;
     }
