@@ -1,31 +1,37 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-// Tracks user activities and carbon savings for the GreenMint App
+import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+
 contract CarbonTrackingContract {
-    // Struct to store activity details
+    address public backendAddress;
     struct Activity {
-        address user; // User who performed the activity
-        uint256 carbonSaved; // CO2 saved in grams
-        string activityType; // e.g., "biking", "public_transport"
-        uint256 timestamp; // When the activity was recorded
-        bool verified; // Verification status from VerificationContract
+        address user;
+        uint256 carbonSaved;
+        string activityType;
+        uint256 timestamp;
+        bool verified;
+        string ipfsHash;
     }
 
-    // Mapping to store user activities
     mapping(address => Activity[]) public userActivities;
+    AggregatorV3Interface public carbonOracle;
 
-    // Event emitted when an activity is logged
     event ActivityLogged(address indexed user, uint256 carbonSaved, string activityType);
 
-    // Records a verified activity
-    function recordActivity(address _user, uint256 _carbonSaved, string memory _activityType, bool _verified) external {
-        require(_verified, "Activity must be verified");
-        userActivities[_user].push(Activity(_user, _carbonSaved, _activityType, block.timestamp, _verified));
-        emit ActivityLogged(_user, _carbonSaved, _activityType);
+    constructor(address _backendAddress, address _carbonOracle) {
+        backendAddress = _backendAddress;
+        carbonOracle = AggregatorV3Interface(_carbonOracle);
     }
 
-    // Retrieves all activities for a user
+    function recordActivities(Activity[] memory _activities) external {
+        require(msg.sender == backendAddress, "Only backend can record");
+        for (uint256 i = 0; i < _activities.length; i++) {
+            userActivities[_activities[i].user].push(_activities[i]);
+            emit ActivityLogged(_activities[i].user, _activities[i].carbonSaved, _activities[i].activityType);
+        }
+    }
+
     function getUserActivities(address _user) external view returns (Activity[] memory) {
         return userActivities[_user];
     }
