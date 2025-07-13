@@ -3,38 +3,49 @@ pragma solidity ^0.8.28;
 
 import "./CarbonTrackingContract.sol";
 
-// Manages challenge leaderboards for GreenMint App
 contract LeaderboardContract {
-    // Reference to CarbonTrackingContract for activity data
+    address public backendAddress;
     CarbonTrackingContract public carbonTrackingContract;
 
-    // Struct to store challenge details
     struct Challenge {
         uint256 challengeId;
-        mapping(address => uint256) userScores; // Carbon saved per user
-        address[] topUsers; // Top-ranked users
+        mapping(address => uint256) userScores;
+        address[10] topUsers; // Fixed-size array for gas efficiency
     }
 
-    // Mapping to store challenges
     mapping(uint256 => Challenge) public challenges;
 
-    constructor(address _carbonTrackingContract) {
+    constructor(address _backendAddress, address _carbonTrackingContract) {
+        backendAddress = _backendAddress;
         carbonTrackingContract = CarbonTrackingContract(_carbonTrackingContract);
     }
 
-    // Updates user score for a challenge
-    function updateScore(uint256 _challengeId, address _user, uint256 _carbonSaved) external {
-        challenges[_challengeId].userScores[_user] += _carbonSaved;
-        // Simplified ranking logic (update topUsers off-chain for gas efficiency)
+    function updateScore(uint256 _challengeId, address _user, uint256 _carbonSaved, bool _isMarketplace) external {
+        require(msg.sender == backendAddress, "Only backend can update");
+        Challenge storage challenge = challenges[_challengeId];
+        challenge.userScores[_user] += _isMarketplace ? _carbonSaved * 2 : _carbonSaved;
+        updateTopUsers(challenge, _user);
     }
 
-    // Retrieves user score for a challenge
+    function updateTopUsers(Challenge storage _challenge, address _user) private {
+        uint256 score = _challenge.userScores[_user];
+        address[10] storage users = _challenge.topUsers;
+        for (uint256 i = 0; i < 10; i++) {
+            if (score > _challenge.userScores[users[i]] || users[i] == address(0)) {
+                for (uint256 j = 9; j > i; j--) {
+                    users[j] = users[j - 1];
+                }
+                users[i] = _user;
+                break;
+            }
+        }
+    }
+
     function getUserScore(uint256 _challengeId, address _user) external view returns (uint256) {
         return challenges[_challengeId].userScores[_user];
     }
 
-    // Retrieves top users for a challenge
-    function getTopUsers(uint256 _challengeId) external view returns (address[] memory) {
+    function getTopUsers(uint256 _challengeId) external view returns (address[10] memory) {
         return challenges[_challengeId].topUsers;
     }
 }
