@@ -29,7 +29,7 @@ contract NFTRewardContract is ERC721, ERC721URIStorage, ERC721Burnable, AccessCo
         uint256 newTokenId = _tokenIdCounter.current();
         _safeMint(recipient, newTokenId);
         _setTokenURI(newTokenId, _tokenUri);
-        _delegate(recipient, recipient); // Delegate votes to the recipient
+        _delegate(recipient, recipient);
         return newTokenId;
     }
 
