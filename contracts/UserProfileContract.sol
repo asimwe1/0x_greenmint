@@ -1,25 +1,40 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-// Stores user profile data for GreenMint App
 contract UserProfileContract {
-    // Struct to store user profile
+    address public backendAddress;
     struct UserProfile {
-        string carModel; // e.g., "Toyota Corolla"
-        uint256 fuelConsumption; // Liters per month
-        uint256 totalCarbonSaved; // Cumulative CO2 saved
+        string carModel;
+        uint256 fuelConsumption;
+        uint256 totalCarbonSaved;
+        uint256 marketplaceItemsSold;
+        uint256 marketplaceItemsBought;
     }
 
-    // Mapping to store user profiles
     mapping(address => UserProfile) public userProfiles;
 
-    // Updates user profile
-    function updateProfile(address _user, string memory _carModel, uint256 _fuelConsumption) external {
-        userProfiles[_user] = UserProfile(_carModel, _fuelConsumption, userProfiles[_user].totalCarbonSaved);
+    constructor(address _backendAddress) {
+        backendAddress = _backendAddress;
     }
 
-    // Adds carbon savings to user profile
+    function updateProfile(address _user, string memory _carModel, uint256 _fuelConsumption) external {
+        require(msg.sender == backendAddress, "Only backend can update");
+        UserProfile storage profile = userProfiles[_user];
+        profile.carModel = _carModel;
+        profile.fuelConsumption = _fuelConsumption;
+    }
+
     function addCarbonSaved(address _user, uint256 _carbonSaved) external {
+        require(msg.sender == backendAddress, "Only backend can update");
         userProfiles[_user].totalCarbonSaved += _carbonSaved;
+    }
+
+    function updateMarketplaceActivity(address _user, bool _isSold) external {
+        require(msg.sender == backendAddress, "Only backend can update");
+        if (_isSold) {
+            userProfiles[_user].marketplaceItemsSold += 1;
+        } else {
+            userProfiles[_user].marketplaceItemsBought += 1;
+        }
     }
 }
