@@ -7,8 +7,9 @@
     "redoc-cli": "^0.13.21"
   },
   "dependencies": {
+    "@chainlink/contracts": "^1.4.0",
     "@openzeppelin/contracts": "^4.9.6",
     "chai": "^4.3.7",
-    "dotenv": "^17.0.1"
+    "dotenv": "^17.2.0"
   }
 }
