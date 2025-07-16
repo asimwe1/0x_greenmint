@@ -6,6 +6,729 @@
     "description": "Auto-generated OpenAPI documentation for Solidity contracts."
   },
   "paths": {
+    "/CarbonCreditTokenContract/DEFAULT_ADMIN_ROLE": {
+      "post": {
+        "summary": "Call DEFAULT_ADMIN_ROLE on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/MINTER_ROLE": {
+      "post": {
+        "summary": "Call MINTER_ROLE on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/allowance": {
+      "post": {
+        "summary": "Call allowance on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "spender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/approve": {
+      "post": {
+        "summary": "Call approve on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "spender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/balanceOf": {
+      "post": {
+        "summary": "Call balanceOf on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/burn": {
+      "post": {
+        "summary": "Call burn on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_amount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/decimals": {
+      "post": {
+        "summary": "Call decimals on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/decreaseAllowance": {
+      "post": {
+        "summary": "Call decreaseAllowance on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "spender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "subtractedValue",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/getRoleAdmin": {
+      "post": {
+        "summary": "Call getRoleAdmin on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/grantRole": {
+      "post": {
+        "summary": "Call grantRole on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/hasRole": {
+      "post": {
+        "summary": "Call hasRole on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/increaseAllowance": {
+      "post": {
+        "summary": "Call increaseAllowance on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "spender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "addedValue",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/mint": {
+      "post": {
+        "summary": "Call mint on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_amount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/name": {
+      "post": {
+        "summary": "Call name on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/renounceRole": {
+      "post": {
+        "summary": "Call renounceRole on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/revokeRole": {
+      "post": {
+        "summary": "Call revokeRole on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/symbol": {
+      "post": {
+        "summary": "Call symbol on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/totalSupply": {
+      "post": {
+        "summary": "Call totalSupply on CarbonCreditTokenContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/transfer": {
+      "post": {
+        "summary": "Call transfer on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonCreditTokenContract/transferFrom": {
+      "post": {
+        "summary": "Call transferFrom on CarbonCreditTokenContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonTrackingContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on CarbonTrackingContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CarbonTrackingContract/carbonOracle": {
+      "post": {
+        "summary": "Call carbonOracle on CarbonTrackingContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/CarbonTrackingContract/getUserActivities": {
       "post": {
         "summary": "Call getUserActivities on CarbonTrackingContract",
@@ -35,46 +758,19 @@
         }
       }
     },
-    "/CarbonTrackingContract/recordActivity": {
+    "/CarbonTrackingContract/recordActivities": {
       "post": {
-        "summary": "Call recordActivity on CarbonTrackingContract",
+        "summary": "Call recordActivities on CarbonTrackingContract",
         "description": "State mutability: nonpayable",
         "parameters": [
           {
-            "name": "_user",
+            "name": "_activities",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "array"
             },
-            "description": "address"
-          },
-          {
-            "name": "_carbonSaved",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "uint256"
-          },
-          {
-            "name": "_activityType",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "string"
-          },
-          {
-            "name": "_verified",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "boolean"
-            },
-            "description": "bool"
+            "description": "struct CarbonTrackingContract.Activity[]"
           }
         ],
         "responses": {
@@ -137,6 +833,9 @@
                     },
                     "verified": {
                       "type": "boolean"
+                    },
+                    "ipfsHash": {
+                      "type": "string"
                     }
                   }
                 }
@@ -168,6 +867,44 @@
     "/ChallengeManagementContract/DEFAULT_ADMIN_ROLE": {
       "post": {
         "summary": "Call DEFAULT_ADMIN_ROLE on ChallengeManagementContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on ChallengeManagementContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ChallengeManagementContract/carbonTrackingContract": {
+      "post": {
+        "summary": "Call carbonTrackingContract on ChallengeManagementContract",
         "description": "State mutability: view",
         "parameters": [],
         "responses": {
@@ -240,6 +977,9 @@
                     },
                     "isActive": {
                       "type": "boolean"
+                    },
+                    "isMarketplaceChallenge": {
+                      "type": "boolean"
                     }
                   }
                 }
@@ -249,28 +989,19 @@
         }
       }
     },
-    "/ChallengeManagementContract/createChallenge": {
+    "/ChallengeManagementContract/createChallenges": {
       "post": {
-        "summary": "Call createChallenge on ChallengeManagementContract",
+        "summary": "Call createChallenges on ChallengeManagementContract",
         "description": "State mutability: nonpayable",
         "parameters": [
           {
-            "name": "_description",
+            "name": "_challenges",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "array"
             },
-            "description": "string"
-          },
-          {
-            "name": "_duration",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "uint256"
+            "description": "struct ChallengeManagementContract.Challenge[]"
           }
         ],
         "responses": {
@@ -1860,6 +2591,379 @@
         }
       }
     },
+    "/IPFSStorageContract/DEFAULT_ADMIN_ROLE": {
+      "post": {
+        "summary": "Call DEFAULT_ADMIN_ROLE on IPFSStorageContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/UPLOADER_ROLE": {
+      "post": {
+        "summary": "Call UPLOADER_ROLE on IPFSStorageContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on IPFSStorageContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/getRoleAdmin": {
+      "post": {
+        "summary": "Call getRoleAdmin on IPFSStorageContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/grantRole": {
+      "post": {
+        "summary": "Call grantRole on IPFSStorageContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/hasRole": {
+      "post": {
+        "summary": "Call hasRole on IPFSStorageContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/isValidIpfsHash": {
+      "post": {
+        "summary": "Call isValidIpfsHash on IPFSStorageContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "_ipfsHash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/renounceRole": {
+      "post": {
+        "summary": "Call renounceRole on IPFSStorageContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/revokeRole": {
+      "post": {
+        "summary": "Call revokeRole on IPFSStorageContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on IPFSStorageContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/uploadIpfsHash": {
+      "post": {
+        "summary": "Call uploadIpfsHash on IPFSStorageContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_ipfsHash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/IPFSStorageContract/validIpfsHashes": {
+      "post": {
+        "summary": "Call validIpfsHashes on IPFSStorageContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/LeaderboardContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on LeaderboardContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/LeaderboardContract/carbonTrackingContract": {
       "post": {
         "summary": "Call carbonTrackingContract on LeaderboardContract",
@@ -1929,7 +3033,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array"
+                  "type": "string"
                 }
               }
             }
@@ -2006,6 +3110,15 @@
               "type": "integer"
             },
             "description": "uint256"
+          },
+          {
+            "name": "_isMarketplace",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "bool"
           }
         ],
         "responses": {
@@ -2015,6 +3128,870 @@
               "application/json": {
                 "schema": {
                   "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/DEFAULT_ADMIN_ROLE": {
+      "post": {
+        "summary": "Call DEFAULT_ADMIN_ROLE on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/SELLER_ROLE": {
+      "post": {
+        "summary": "Call SELLER_ROLE on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/buyItems": {
+      "post": {
+        "summary": "Call buyItems on MarketplaceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_listingIds",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          },
+          {
+            "name": "_buyers",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "address[]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/getRoleAdmin": {
+      "post": {
+        "summary": "Call getRoleAdmin on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/grantRole": {
+      "post": {
+        "summary": "Call grantRole on MarketplaceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/hasRole": {
+      "post": {
+        "summary": "Call hasRole on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/listItems": {
+      "post": {
+        "summary": "Call listItems on MarketplaceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_sellers",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "address[]"
+          },
+          {
+            "name": "_ipfsDescriptions",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array"
+            },
+            "description": "string[]"
+          },
+          {
+            "name": "_prices",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/listingCount": {
+      "post": {
+        "summary": "Call listingCount on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/listings": {
+      "post": {
+        "summary": "Call listings on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "listingId": {
+                      "type": "integer"
+                    },
+                    "seller": {
+                      "type": "string"
+                    },
+                    "ipfsDescription": {
+                      "type": "string"
+                    },
+                    "price": {
+                      "type": "integer"
+                    },
+                    "isActive": {
+                      "type": "boolean"
+                    },
+                    "isVerified": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/renounceRole": {
+      "post": {
+        "summary": "Call renounceRole on MarketplaceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/revokeRole": {
+      "post": {
+        "summary": "Call revokeRole on MarketplaceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/rewardPoolContract": {
+      "post": {
+        "summary": "Call rewardPoolContract on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/stablecoin": {
+      "post": {
+        "summary": "Call stablecoin on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/userProfileContract": {
+      "post": {
+        "summary": "Call userProfileContract on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/verificationContract": {
+      "post": {
+        "summary": "Call verificationContract on MarketplaceContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarketplaceContract/verifyListings": {
+      "post": {
+        "summary": "Call verifyListings on MarketplaceContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_listingIds",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256[]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/decimals": {
+      "post": {
+        "summary": "Call decimals on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/description": {
+      "post": {
+        "summary": "Call description on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/getAnswer": {
+      "post": {
+        "summary": "Call getAnswer on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/getRoundData": {
+      "post": {
+        "summary": "Call getRoundData on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "_roundId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint80"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "roundId": {
+                      "type": "integer"
+                    },
+                    "answer": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "integer"
+                    },
+                    "updatedAt": {
+                      "type": "integer"
+                    },
+                    "answeredInRound": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/getTimestamp": {
+      "post": {
+        "summary": "Call getTimestamp on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/latestAnswer": {
+      "post": {
+        "summary": "Call latestAnswer on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/latestRound": {
+      "post": {
+        "summary": "Call latestRound on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/latestRoundData": {
+      "post": {
+        "summary": "Call latestRoundData on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "roundId": {
+                      "type": "integer"
+                    },
+                    "answer": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "integer"
+                    },
+                    "updatedAt": {
+                      "type": "integer"
+                    },
+                    "answeredInRound": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/latestTimestamp": {
+      "post": {
+        "summary": "Call latestTimestamp on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/updateAnswer": {
+      "post": {
+        "summary": "Call updateAnswer on MockV3Aggregator",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_answer",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "int256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/updateRoundData": {
+      "post": {
+        "summary": "Call updateRoundData on MockV3Aggregator",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_roundId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint80"
+          },
+          {
+            "name": "_answer",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "int256"
+          },
+          {
+            "name": "_timestamp",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "_startedAt",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MockV3Aggregator/version": {
+      "post": {
+        "summary": "Call version on MockV3Aggregator",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
                 }
               }
             }
@@ -3064,6 +5041,427 @@
         }
       }
     },
+    "/OracleIntegrationContract/DEFAULT_ADMIN_ROLE": {
+      "post": {
+        "summary": "Call DEFAULT_ADMIN_ROLE on OracleIntegrationContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/ORACLE_ROLE": {
+      "post": {
+        "summary": "Call ORACLE_ROLE on OracleIntegrationContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on OracleIntegrationContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/carbonData": {
+      "post": {
+        "summary": "Call carbonData on OracleIntegrationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/fulfill": {
+      "post": {
+        "summary": "Call fulfill on OracleIntegrationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_requestId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "_carbonValue",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/getCarbonData": {
+      "post": {
+        "summary": "Call getCarbonData on OracleIntegrationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "_requestId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/getRoleAdmin": {
+      "post": {
+        "summary": "Call getRoleAdmin on OracleIntegrationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/grantRole": {
+      "post": {
+        "summary": "Call grantRole on OracleIntegrationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/hasRole": {
+      "post": {
+        "summary": "Call hasRole on OracleIntegrationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/pendingRequests": {
+      "post": {
+        "summary": "Call pendingRequests on OracleIntegrationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/renounceRole": {
+      "post": {
+        "summary": "Call renounceRole on OracleIntegrationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/requestCarbonData": {
+      "post": {
+        "summary": "Call requestCarbonData on OracleIntegrationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/revokeRole": {
+      "post": {
+        "summary": "Call revokeRole on OracleIntegrationContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OracleIntegrationContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on OracleIntegrationContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/MutablePaymentSplitter/addPayee": {
       "post": {
         "summary": "Call addPayee on MutablePaymentSplitter",
@@ -3102,28 +5500,9 @@
         }
       }
     },
-    "/MutablePaymentSplitter/getPayees": {
+    "/MutablePaymentSplitter/backendAddress": {
       "post": {
-        "summary": "Call getPayees on MutablePaymentSplitter",
-        "description": "State mutability: view",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/MutablePaymentSplitter/owner": {
-      "post": {
-        "summary": "Call owner on MutablePaymentSplitter",
+        "summary": "Call backendAddress on MutablePaymentSplitter",
         "description": "State mutability: view",
         "parameters": [],
         "responses": {
@@ -3140,21 +5519,11 @@
         }
       }
     },
-    "/MutablePaymentSplitter/payee": {
+    "/MutablePaymentSplitter/owner": {
       "post": {
-        "summary": "Call payee on MutablePaymentSplitter",
+        "summary": "Call owner on MutablePaymentSplitter",
         "description": "State mutability: view",
-        "parameters": [
-          {
-            "name": "index",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "uint256"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success",
@@ -3204,13 +5573,13 @@
         "description": "State mutability: nonpayable",
         "parameters": [
           {
-            "name": "account",
+            "name": "_accounts",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "array"
             },
-            "description": "address payable"
+            "description": "address[]"
           }
         ],
         "responses": {
@@ -3220,35 +5589,6 @@
               "application/json": {
                 "schema": {
                   "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/MutablePaymentSplitter/released": {
-      "post": {
-        "summary": "Call released on MutablePaymentSplitter",
-        "description": "State mutability: view",
-        "parameters": [
-          {
-            "name": "account",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "address"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "integer"
                 }
               }
             }
@@ -3333,9 +5673,9 @@
         }
       }
     },
-    "/MutablePaymentSplitter/totalReleased": {
+    "/MutablePaymentSplitter/stablecoin": {
       "post": {
-        "summary": "Call totalReleased on MutablePaymentSplitter",
+        "summary": "Call stablecoin on MutablePaymentSplitter",
         "description": "State mutability: view",
         "parameters": [],
         "responses": {
@@ -3344,26 +5684,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "integer"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/MutablePaymentSplitter/totalShares": {
-      "post": {
-        "summary": "Call totalShares on MutablePaymentSplitter",
-        "description": "State mutability: view",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "integer"
+                  "type": "string"
                 }
               }
             }
@@ -3438,6 +5759,25 @@
         }
       }
     },
+    "/RewardPoolContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/RewardPoolContract/challengeRewards": {
       "post": {
         "summary": "Call challengeRewards on RewardPoolContract",
@@ -3482,7 +5822,7 @@
         "description": "State mutability: nonpayable",
         "parameters": [
           {
-            "name": "_challengeId",
+            "name": "_id",
             "in": "query",
             "required": true,
             "schema": {
@@ -3498,6 +5838,15 @@
               "type": "integer"
             },
             "description": "uint256[]"
+          },
+          {
+            "name": "_isMarketplace",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "bool"
           }
         ],
         "responses": {
@@ -3520,7 +5869,7 @@
         "description": "State mutability: nonpayable",
         "parameters": [
           {
-            "name": "_challengeId",
+            "name": "_id",
             "in": "query",
             "required": true,
             "schema": {
@@ -3536,6 +5885,53 @@
               "type": "string"
             },
             "description": "address"
+          },
+          {
+            "name": "_isMarketplace",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "bool"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/distributeTokenReward": {
+      "post": {
+        "summary": "Call distributeTokenReward on RewardPoolContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_recipient",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_amount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
           }
         ],
         "responses": {
@@ -3650,6 +6046,44 @@
               "application/json": {
                 "schema": {
                   "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RewardPoolContract/marketplaceRewards": {
+      "post": {
+        "summary": "Call marketplaceRewards on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
                 }
               }
             }
@@ -3781,6 +6215,25 @@
         }
       }
     },
+    "/RewardPoolContract/tokenContract": {
+      "post": {
+        "summary": "Call tokenContract on RewardPoolContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/SolanaAdapterContract/syncToSolana": {
       "post": {
         "summary": "Call syncToSolana on SolanaAdapterContract",
@@ -3819,6 +6272,360 @@
         }
       }
     },
+    "/UserOnboardingContract/AUTHORIZER_ROLE": {
+      "post": {
+        "summary": "Call AUTHORIZER_ROLE on UserOnboardingContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/DEFAULT_ADMIN_ROLE": {
+      "post": {
+        "summary": "Call DEFAULT_ADMIN_ROLE on UserOnboardingContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/authenticateUser": {
+      "post": {
+        "summary": "Call authenticateUser on UserOnboardingContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on UserOnboardingContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/getRoleAdmin": {
+      "post": {
+        "summary": "Call getRoleAdmin on UserOnboardingContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/grantRole": {
+      "post": {
+        "summary": "Call grantRole on UserOnboardingContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/hasRole": {
+      "post": {
+        "summary": "Call hasRole on UserOnboardingContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/registerUser": {
+      "post": {
+        "summary": "Call registerUser on UserOnboardingContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/registeredUsers": {
+      "post": {
+        "summary": "Call registeredUsers on UserOnboardingContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/renounceRole": {
+      "post": {
+        "summary": "Call renounceRole on UserOnboardingContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/revokeRole": {
+      "post": {
+        "summary": "Call revokeRole on UserOnboardingContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserOnboardingContract/supportsInterface": {
+      "post": {
+        "summary": "Call supportsInterface on UserOnboardingContract",
+        "description": "State mutability: view",
+        "parameters": [
+          {
+            "name": "interfaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/UserProfileContract/addCarbonSaved": {
       "post": {
         "summary": "Call addCarbonSaved on UserProfileContract",
@@ -3841,6 +6648,63 @@
               "type": "integer"
             },
             "description": "uint256"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfileContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on UserProfileContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfileContract/updateMarketplaceActivity": {
+      "post": {
+        "summary": "Call updateMarketplaceActivity on UserProfileContract",
+        "description": "State mutability: nonpayable",
+        "parameters": [
+          {
+            "name": "_user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "_isSold",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "bool"
           }
         ],
         "responses": {
@@ -3935,6 +6799,12 @@
                     },
                     "totalCarbonSaved": {
                       "type": "integer"
+                    },
+                    "marketplaceItemsSold": {
+                      "type": "integer"
+                    },
+                    "marketplaceItemsBought": {
+                      "type": "integer"
                     }
                   }
                 }
@@ -3982,21 +6852,40 @@
         }
       }
     },
-    "/VerificationContract/approveVerification": {
+    "/VerificationContract/approveVerifications": {
       "post": {
-        "summary": "Call approveVerification on VerificationContract",
+        "summary": "Call approveVerifications on VerificationContract",
         "description": "State mutability: nonpayable",
         "parameters": [
           {
-            "name": "_verificationId",
+            "name": "_verificationIds",
             "in": "query",
             "required": true,
             "schema": {
               "type": "integer"
             },
-            "description": "uint256"
+            "description": "uint256[]"
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerificationContract/backendAddress": {
+      "post": {
+        "summary": "Call backendAddress on VerificationContract",
+        "description": "State mutability: view",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success",
@@ -4287,6 +7176,25 @@
         }
       }
     },
+    "/VerificationContract/verificationOracle": {
+      "post": {
+        "summary": "Call verificationOracle on VerificationContract",
+        "description": "State mutability: view",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/VerificationContract/verifications": {
       "post": {
         "summary": "Call verifications on VerificationContract",
@@ -4336,6 +7244,9 @@
   },
   "tags": [
     {
+      "name": "CarbonCreditTokenContract"
+    },
+    {
       "name": "CarbonTrackingContract"
     },
     {
@@ -4345,10 +7256,22 @@
       "name": "GovernanceContract"
     },
     {
+      "name": "IPFSStorageContract"
+    },
+    {
       "name": "LeaderboardContract"
     },
     {
+      "name": "MarketplaceContract"
+    },
+    {
+      "name": "MockV3Aggregator"
+    },
+    {
       "name": "NFTRewardContract"
+    },
+    {
+      "name": "OracleIntegrationContract"
     },
     {
       "name": "MutablePaymentSplitter"
@@ -4360,6 +7283,9 @@
       "name": "SolanaAdapterContract"
     },
     {
+      "name": "UserOnboardingContract"
+    },
+    {
       "name": "UserProfileContract"
     },
     {
@@ -4368,6 +7294,173 @@
   ],
   "components": {},
   "x_events": {
+    "CarbonCreditTokenContract": [
+      {
+        "summary": "Event: Approval",
+        "description": "Emitted when Approval occurs.",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "spender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleAdminChanged",
+        "description": "Emitted when RoleAdminChanged occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "previousAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "newAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleGranted",
+        "description": "Emitted when RoleGranted occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleRevoked",
+        "description": "Emitted when RoleRevoked occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: Transfer",
+        "description": "Emitted when Transfer occurs.",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      }
+    ],
     "CarbonTrackingContract": [
       {
         "summary": "Event: ActivityLogged",
@@ -4739,6 +7832,366 @@
         ]
       }
     ],
+    "IPFSStorageContract": [
+      {
+        "summary": "Event: IpfsHashUploaded",
+        "description": "Emitted when IpfsHashUploaded occurs.",
+        "parameters": [
+          {
+            "name": "ipfsHash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleAdminChanged",
+        "description": "Emitted when RoleAdminChanged occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "previousAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "newAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleGranted",
+        "description": "Emitted when RoleGranted occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleRevoked",
+        "description": "Emitted when RoleRevoked occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      }
+    ],
+    "MarketplaceContract": [
+      {
+        "summary": "Event: ItemListed",
+        "description": "Emitted when ItemListed occurs.",
+        "parameters": [
+          {
+            "name": "listingId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "seller",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "ipfsDescription",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "string"
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: ItemSold",
+        "description": "Emitted when ItemSold occurs.",
+        "parameters": [
+          {
+            "name": "listingId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "buyer",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleAdminChanged",
+        "description": "Emitted when RoleAdminChanged occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "previousAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "newAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleGranted",
+        "description": "Emitted when RoleGranted occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleRevoked",
+        "description": "Emitted when RoleRevoked occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      }
+    ],
+    "MockV3Aggregator": [
+      {
+        "summary": "Event: AnswerUpdated",
+        "description": "Emitted when AnswerUpdated occurs.",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "int256"
+          },
+          {
+            "name": "roundId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "updatedAt",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: NewRound",
+        "description": "Emitted when NewRound occurs.",
+        "parameters": [
+          {
+            "name": "roundId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          },
+          {
+            "name": "startedBy",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "startedAt",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      }
+    ],
     "NFTRewardContract": [
       {
         "summary": "Event: Approval",
@@ -5049,6 +8502,200 @@
         ]
       }
     ],
+    "OracleIntegrationContract": [
+      {
+        "summary": "Event: CarbonDataReceived",
+        "description": "Emitted when CarbonDataReceived occurs.",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "carbonValue",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "uint256"
+          }
+        ]
+      },
+      {
+        "summary": "Event: CarbonDataRequested",
+        "description": "Emitted when CarbonDataRequested occurs.",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "requester",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: ChainlinkCancelled",
+        "description": "Emitted when ChainlinkCancelled occurs.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: ChainlinkFulfilled",
+        "description": "Emitted when ChainlinkFulfilled occurs.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: ChainlinkRequested",
+        "description": "Emitted when ChainlinkRequested occurs.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleAdminChanged",
+        "description": "Emitted when RoleAdminChanged occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "previousAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "newAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleGranted",
+        "description": "Emitted when RoleGranted occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleRevoked",
+        "description": "Emitted when RoleRevoked occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      }
+    ],
     "MutablePaymentSplitter": [
       {
         "summary": "Event: OwnershipTransferred",
@@ -5110,30 +8757,6 @@
               "type": "string"
             },
             "description": "address"
-          }
-        ]
-      },
-      {
-        "summary": "Event: PaymentReceived",
-        "description": "Emitted when PaymentReceived occurs.",
-        "parameters": [
-          {
-            "name": "from",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "address"
-          },
-          {
-            "name": "amount",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "uint256"
           }
         ]
       },
@@ -5285,6 +8908,137 @@
               "type": "string"
             },
             "description": "bytes"
+          }
+        ]
+      }
+    ],
+    "UserOnboardingContract": [
+      {
+        "summary": "Event: RoleAdminChanged",
+        "description": "Emitted when RoleAdminChanged occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "previousAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "newAdminRole",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleGranted",
+        "description": "Emitted when RoleGranted occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: RoleRevoked",
+        "description": "Emitted when RoleRevoked occurs.",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          },
+          {
+            "name": "sender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: UserAuthenticated",
+        "description": "Emitted when UserAuthenticated occurs.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
+          }
+        ]
+      },
+      {
+        "summary": "Event: UserRegistered",
+        "description": "Emitted when UserRegistered occurs.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "address"
           }
         ]
       }
