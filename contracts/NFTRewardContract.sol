@@ -16,8 +16,8 @@ contract NFTRewardContract is ERC721, ERC721URIStorage, ERC721Burnable, AccessCo
     bytes32 public constant ADMINISTRATOR_ROLE = keccak256("ADMINISTRATOR_ROLE");
 
     constructor() ERC721("GreenMintNFT", "GMNFT") EIP712("GreenMintNFT", "1") {
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(ADMINISTRATOR_ROLE, msg.sender);
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(ADMINISTRATOR_ROLE, msg.sender);
     }
 
     function mintNFT(address recipient, string memory _tokenUri)

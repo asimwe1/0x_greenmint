@@ -14,7 +14,9 @@ contract VerificationContract is AccessControl {
         uint256 activityId;
         string ipfsHash;
         bool isVerified;
+        bool isRejected;
         address verifier;
+        string rejectionReason;
     }
 
     mapping(uint256 => Verification) public verifications;
@@ -22,10 +24,11 @@ contract VerificationContract is AccessControl {
 
     event VerificationSubmitted(uint256 indexed verificationId, address user, string ipfsHash);
     event VerificationApproved(uint256 indexed verificationId, address verifier);
+    event VerificationRejected(uint256 indexed verificationId, address verifier, string reason);
 
     constructor(address _backendAddress, address _verificationOracle) {
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(VERIFIER_ROLE, msg.sender);
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(VERIFIER_ROLE, msg.sender);
         backendAddress = _backendAddress;
         verificationOracle = AggregatorV3Interface(_verificationOracle);
     }
@@ -33,7 +36,7 @@ contract VerificationContract is AccessControl {
     function submitVerification(address _user, uint256 _activityId, string memory _ipfsHash) external {
         require(msg.sender == backendAddress, "Only backend can submit");
         verificationCount++;
-        verifications[verificationCount] = Verification(_user, _activityId, _ipfsHash, false, address(0));
+        verifications[verificationCount] = Verification(_user, _activityId, _ipfsHash, false, false, address(0), "");
         emit VerificationSubmitted(verificationCount, _user, _ipfsHash);
     }
 
@@ -41,10 +44,23 @@ contract VerificationContract is AccessControl {
         require(msg.sender == backendAddress, "Only backend can approve");
         for (uint256 i = 0; i < _verificationIds.length; i++) {
             uint256 id = _verificationIds[i];
-            require(!verifications[id].isVerified, "Already verified");
+            require(!verifications[id].isVerified && !verifications[id].isRejected, "Already processed");
             verifications[id].isVerified = true;
             verifications[id].verifier = msg.sender;
             emit VerificationApproved(id, msg.sender);
+        }
+    }
+
+    function rejectVerifications(uint256[] memory _verificationIds, string[] memory _reasons) external onlyRole(VERIFIER_ROLE) {
+        require(msg.sender == backendAddress, "Only backend can reject");
+        require(_verificationIds.length == _reasons.length, "Arrays length mismatch");
+        for (uint256 i = 0; i < _verificationIds.length; i++) {
+            uint256 id = _verificationIds[i];
+            require(!verifications[id].isVerified && !verifications[id].isRejected, "Already processed");
+            verifications[id].isRejected = true;
+            verifications[id].rejectionReason = _reasons[i];
+            verifications[id].verifier = msg.sender;
+            emit VerificationRejected(id, msg.sender, _reasons[i]);
         }
     }
 }
