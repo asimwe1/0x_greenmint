@@ -11,7 +11,7 @@ function artifactExists(contractName: string): boolean {
   }
 }
 
-describe("GreenMint Contracts", function () {
+describe("GreenMint Contracts Integration", function () {
   let deployer: any, payee1: any, payee2: any, user: any;
   let nftReward: any;
   let rewardPool: any;
@@ -121,17 +121,17 @@ describe("GreenMint Contracts", function () {
 });
 
 // Keep the existing test cases (should deploy all contracts, mint NFT, etc.) as they are
-it("should deploy all contracts", async function () {
-expect(await nftReward.getAddress()).to.be.properAddress;
-expect(await rewardPool.getAddress()).to.be.properAddress;
-expect(await carbonTracking.getAddress()).to.be.properAddress;
-expect(await leaderboard.getAddress()).to.be.properAddress;
-expect(await payment.getAddress()).to.be.properAddress;
-expect(await challengeManagement.getAddress()).to.be.properAddress;
-expect(await userProfile.getAddress()).to.be.properAddress;
-expect(await verification.getAddress()).to.be.properAddress;
-expect(await solanaAdapter.getAddress()).to.be.properAddress;
-});
+  it("should deploy all contracts", async function () {
+    expect(await nftReward.getAddress()).to.be.properAddress;
+    expect(await rewardPool.getAddress()).to.be.properAddress;
+    expect(await carbonTracking.getAddress()).to.be.properAddress;
+    expect(await leaderboard.getAddress()).to.be.properAddress;
+    expect(await payment.getAddress()).to.be.properAddress;
+    expect(await challengeManagement.getAddress()).to.be.properAddress;
+    expect(await userProfile.getAddress()).to.be.properAddress;
+    expect(await verification.getAddress()).to.be.properAddress;
+    expect(await solanaAdapter.getAddress()).to.be.properAddress;
+  });
 
   it("should mint an NFT in NFTRewardContract", async function () {
     await nftReward.grantRole(await nftReward.ADMINISTRATOR_ROLE(), await deployer.getAddress());
