@@ -10,7 +10,7 @@ describe("NFTRewardContract", function () {
     
     const NFTRewardContract = await ethers.getContractFactory("NFTRewardContract");
     nftReward = await NFTRewardContract.deploy();
-    await nftReward.deployed();
+    await nftReward.waitForDeployment();
   });
 
   describe("Deployment", function () {
