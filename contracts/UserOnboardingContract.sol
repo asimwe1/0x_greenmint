@@ -13,8 +13,8 @@ contract UserOnboardingContract is AccessControl {
 
     constructor(address _backendAddress) {
         backendAddress = _backendAddress;
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(AUTHORIZER_ROLE, msg.sender);
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(AUTHORIZER_ROLE, msg.sender);
     }
 
     function registerUser(address _user) external {

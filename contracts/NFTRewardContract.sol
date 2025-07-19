@@ -3,21 +3,19 @@ pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Votes.sol";
 import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
 contract NFTRewardContract is ERC721, ERC721URIStorage, ERC721Burnable, AccessControl, ERC721Votes {
-    using Counters for Counters.Counter;
-
-    Counters.Counter private _tokenIdCounter;
+    uint256 private _nextTokenId;
     bytes32 public constant ADMINISTRATOR_ROLE = keccak256("ADMINISTRATOR_ROLE");
 
     constructor() ERC721("GreenMintNFT", "GMNFT") EIP712("GreenMintNFT", "1") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(ADMINISTRATOR_ROLE, msg.sender);
+        _nextTokenId = 1; // Start token IDs from 1
     }
 
     function mintNFT(address recipient, string memory _tokenUri)
@@ -25,8 +23,7 @@ contract NFTRewardContract is ERC721, ERC721URIStorage, ERC721Burnable, AccessCo
         onlyRole(ADMINISTRATOR_ROLE)
         returns (uint256)
     {
-        _tokenIdCounter.increment();
-        uint256 newTokenId = _tokenIdCounter.current();
+        uint256 newTokenId = _nextTokenId++;
         _safeMint(recipient, newTokenId);
         _setTokenURI(newTokenId, _tokenUri);
         _delegate(recipient, recipient);
@@ -44,7 +41,7 @@ contract NFTRewardContract is ERC721, ERC721URIStorage, ERC721Burnable, AccessCo
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
-        return "https://ipfs.example.com/metadata/";
+        return "https://ipfs.io/ipfs/";
     }
 
     function _burn(uint256 tokenId) internal virtual override(ERC721, ERC721URIStorage) {

@@ -9,8 +9,8 @@ contract CarbonCreditTokenContract is ERC20, AccessControl {
     address public backendAddress;
 
     constructor(address _backendAddress) ERC20("CarbonCredit", "CCT") {
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(MINTER_ROLE, msg.sender);
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(MINTER_ROLE, msg.sender);
         backendAddress = _backendAddress;
     }
 

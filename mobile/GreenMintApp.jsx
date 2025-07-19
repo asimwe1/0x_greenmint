@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,8 @@ import {
   ScrollView,
   Image,
   ActivityIndicator,
+  Modal,
+  RefreshControl,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Web3Service from './services/Web3Service';
@@ -22,9 +24,12 @@ const GreenMintApp = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [userAddress, setUserAddress] = useState('');
   const [loading, setLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('nfts');
+  const [refreshing, setRefreshing] = useState(false);
+  const [activeTab, setActiveTab] = useState('dashboard');
   const [activityId, setActivityId] = useState('');
   const [ipfsHash, setIpfsHash] = useState('');
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [networkInfo, setNetworkInfo] = useState(null);
 
   useEffect(() => {
     initializeApp();
@@ -40,9 +45,11 @@ const GreenMintApp = () => {
         setIsConnected(true);
         await loadUserData(savedAddress);
       }
+      const netInfo = await Web3Service.getNetworkInfo();
+      setNetworkInfo(netInfo);
     } catch (error) {
       console.error('Failed to initialize app:', error);
-      Alert.alert('Error', 'Failed to initialize the app. Please try again.');
+      Alert.alert('Error', 'Failed to initialize the app. Please check your connection.');
     } finally {
       setLoading(false);
     }
@@ -82,7 +89,6 @@ const GreenMintApp = () => {
 
   const loadUserData = async (address) => {
     try {
-      setLoading(true);
       const [nfts, userVerifications, leaderboardData, credits] = await Promise.all([
         Web3Service.getUserNFTs(address),
         Web3Service.getUserVerifications(address),
@@ -97,9 +103,15 @@ const GreenMintApp = () => {
     } catch (error) {
       console.error('Failed to load user data:', error);
       Alert.alert('Error', 'Failed to load user data. Please try again.');
-    } finally {
-      setLoading(false);
     }
+  };
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    if (userAddress) {
+      await loadUserData(userAddress);
+    }
+    setRefreshing(false);
   };
 
   const submitVerification = async () => {
@@ -114,6 +126,7 @@ const GreenMintApp = () => {
       Alert.alert('Success', 'Verification submitted successfully!');
       setActivityId('');
       setIpfsHash('');
+      setShowSubmitModal(false);
       // Reload verifications
       const userVerifications = await Web3Service.getUserVerifications(userAddress);
       setVerifications(userVerifications);
@@ -125,11 +138,53 @@ const GreenMintApp = () => {
     }
   };
 
-  const refreshData = async () => {
-    if (userAddress) {
-      await loadUserData(userAddress);
-    }
-  };
+  const renderDashboard = () => (
+    <ScrollView 
+      style={styles.tabContent}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+    >
+      <View style={styles.statsContainer}>
+        <View style={styles.statCard}>
+          <Text style={styles.statNumber}>{carbonCredits}</Text>
+          <Text style={styles.statLabel}>Carbon Credits</Text>
+        </View>
+        <View style={styles.statCard}>
+          <Text style={styles.statNumber}>{userNFTs.length}</Text>
+          <Text style={styles.statLabel}>NFT Rewards</Text>
+        </View>
+        <View style={styles.statCard}>
+          <Text style={styles.statNumber}>{verifications.length}</Text>
+          <Text style={styles.statLabel}>Verifications</Text>
+        </View>
+      </View>
+
+      <View style={styles.networkInfo}>
+        <Text style={styles.networkTitle}>Network Status</Text>
+        {networkInfo && (
+          <View style={styles.networkDetails}>
+            <Text style={styles.networkText}>Chain ID: {networkInfo.chainId}</Text>
+            <Text style={styles.networkText}>Block: {networkInfo.blockNumber}</Text>
+            <Text style={styles.networkText}>Network: {networkInfo.name}</Text>
+          </View>
+        )}
+      </View>
+
+      <View style={styles.quickActions}>
+        <TouchableOpacity 
+          style={styles.actionButton}
+          onPress={() => setShowSubmitModal(true)}
+        >
+          <Text style={styles.actionButtonText}>Submit Verification</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.actionButton}
+          onPress={() => setActiveTab('leaderboard')}
+        >
+          <Text style={styles.actionButtonText}>View Leaderboard</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
 
   const renderNFTItem = ({ item }) => (
     <View style={styles.nftItem}>
@@ -138,55 +193,88 @@ const GreenMintApp = () => {
         <Text style={styles.nftTitle}>{item.name}</Text>
         <Text style={styles.nftDescription}>{item.description}</Text>
         <Text style={styles.nftTokenId}>Token ID: {item.tokenId}</Text>
+        {item.attributes && (
+          <View style={styles.nftAttributes}>
+            {item.attributes.map((attr, index) => (
+              <Text key={index} style={styles.nftAttribute}>
+                {attr.trait_type}: {attr.value}
+              </Text>
+            ))}
+          </View>
+        )}
       </View>
     </View>
   );
 
   const renderVerificationItem = ({ item }) => (
     <View style={styles.verificationItem}>
-      <Text style={styles.verificationActivity}>Activity ID: {item.activityId}</Text>
-      <Text style={styles.verificationHash}>IPFS: {item.ipfsHash.substring(0, 20)}...</Text>
-      <View style={styles.verificationStatus}>
-        <Text style={[
-          styles.statusText,
-          item.isVerified ? styles.verified : 
-          item.isRejected ? styles.rejected : styles.pending
-        ]}>
-          {item.isVerified ? '✅ Verified' : 
-           item.isRejected ? '❌ Rejected' : '⏳ Pending'}
-        </Text>
+      <View style={styles.verificationHeader}>
+        <Text style={styles.verificationActivity}>Activity #{item.activityId}</Text>
+        <View style={styles.verificationStatus}>
+          <Text style={[
+            styles.statusText,
+            item.isVerified ? styles.verified : 
+            item.isRejected ? styles.rejected : styles.pending
+          ]}>
+            {item.isVerified ? '✅ Verified' : 
+             item.isRejected ? '❌ Rejected' : '⏳ Pending'}
+          </Text>
+        </View>
       </View>
+      <Text style={styles.verificationHash}>
+        IPFS: {item.ipfsHash.substring(0, 20)}...
+      </Text>
       {item.isRejected && (
-        <Text style={styles.rejectionReason}>Reason: {item.rejectionReason}</Text>
+        <View style={styles.rejectionContainer}>
+          <Text style={styles.rejectionReason}>
+            Reason: {item.rejectionReason || 'No reason provided'}
+          </Text>
+        </View>
       )}
     </View>
   );
 
   const renderLeaderboardItem = ({ item, index }) => (
     <View style={styles.leaderboardItem}>
-      <Text style={styles.leaderboardRank}>#{index + 1}</Text>
-      <Text style={styles.leaderboardAddress}>
-        {item.address.substring(0, 6)}...{item.address.substring(-4)}
-      </Text>
-      <Text style={styles.leaderboardCredits}>{item.credits} Credits</Text>
+      <View style={styles.leaderboardRank}>
+        <Text style={styles.rankNumber}>#{index + 1}</Text>
+      </View>
+      <View style={styles.leaderboardInfo}>
+        <Text style={styles.leaderboardAddress}>
+          {Web3Service.formatAddress(item.address)}
+        </Text>
+        <Text style={styles.leaderboardCredits}>{item.credits} Credits</Text>
+      </View>
+      {item.address.toLowerCase() === userAddress.toLowerCase() && (
+        <View style={styles.currentUserBadge}>
+          <Text style={styles.currentUserText}>You</Text>
+        </View>
+      )}
     </View>
   );
 
   const renderTabContent = () => {
     switch (activeTab) {
+      case 'dashboard':
+        return renderDashboard();
+      
       case 'nfts':
         return (
           <View style={styles.tabContent}>
-            <Text style={styles.sectionTitle}>Your NFT Rewards</Text>
+            <Text style={styles.sectionTitle}>Your NFT Collection</Text>
             <FlatList
               data={userNFTs}
               keyExtractor={(item) => item.tokenId.toString()}
               renderItem={renderNFTItem}
               ListEmptyComponent={
-                <Text style={styles.emptyText}>No NFTs found</Text>
+                <View style={styles.emptyState}>
+                  <Text style={styles.emptyText}>No NFTs found</Text>
+                  <Text style={styles.emptySubtext}>
+                    Complete green activities to earn NFT rewards
+                  </Text>
+                </View>
               }
-              refreshing={loading}
-              onRefresh={refreshData}
+              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
           </View>
         );
@@ -194,40 +282,20 @@ const GreenMintApp = () => {
       case 'verifications':
         return (
           <View style={styles.tabContent}>
-            <Text style={styles.sectionTitle}>Submit Verification</Text>
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                placeholder="Activity ID"
-                value={activityId}
-                onChangeText={setActivityId}
-                keyboardType="numeric"
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="IPFS Hash"
-                value={ipfsHash}
-                onChangeText={setIpfsHash}
-              />
-              <TouchableOpacity
-                style={styles.submitButton}
-                onPress={submitVerification}
-                disabled={loading}
-              >
-                <Text style={styles.submitButtonText}>Submit Verification</Text>
-              </TouchableOpacity>
-            </View>
-            
-            <Text style={styles.sectionTitle}>Your Verifications</Text>
+            <Text style={styles.sectionTitle}>Verification History</Text>
             <FlatList
               data={verifications}
               keyExtractor={(item) => item.id.toString()}
               renderItem={renderVerificationItem}
               ListEmptyComponent={
-                <Text style={styles.emptyText}>No verifications found</Text>
+                <View style={styles.emptyState}>
+                  <Text style={styles.emptyText}>No verifications found</Text>
+                  <Text style={styles.emptySubtext}>
+                    Submit your first green activity for verification
+                  </Text>
+                </View>
               }
-              refreshing={loading}
-              onRefresh={refreshData}
+              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
           </View>
         );
@@ -235,19 +303,20 @@ const GreenMintApp = () => {
       case 'leaderboard':
         return (
           <View style={styles.tabContent}>
-            <Text style={styles.sectionTitle}>Leaderboard</Text>
-            <View style={styles.creditsContainer}>
-              <Text style={styles.creditsText}>Your Credits: {carbonCredits}</Text>
-            </View>
+            <Text style={styles.sectionTitle}>Community Leaderboard</Text>
             <FlatList
               data={leaderboard}
               keyExtractor={(item) => item.address}
               renderItem={renderLeaderboardItem}
               ListEmptyComponent={
-                <Text style={styles.emptyText}>No leaderboard data</Text>
+                <View style={styles.emptyState}>
+                  <Text style={styles.emptyText}>No leaderboard data</Text>
+                  <Text style={styles.emptySubtext}>
+                    Be the first to earn carbon credits!
+                  </Text>
+                </View>
               }
-              refreshing={loading}
-              onRefresh={refreshData}
+              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
           </View>
         );
@@ -257,11 +326,61 @@ const GreenMintApp = () => {
     }
   };
 
+  const renderSubmitModal = () => (
+    <Modal
+      visible={showSubmitModal}
+      animationType="slide"
+      transparent={true}
+      onRequestClose={() => setShowSubmitModal(false)}
+    >
+      <View style={styles.modalOverlay}>
+        <View style={styles.modalContent}>
+          <Text style={styles.modalTitle}>Submit Verification</Text>
+          
+          <TextInput
+            style={styles.modalInput}
+            placeholder="Activity ID"
+            value={activityId}
+            onChangeText={setActivityId}
+            keyboardType="numeric"
+          />
+          
+          <TextInput
+            style={styles.modalInput}
+            placeholder="IPFS Hash"
+            value={ipfsHash}
+            onChangeText={setIpfsHash}
+            multiline
+          />
+          
+          <View style={styles.modalButtons}>
+            <TouchableOpacity
+              style={[styles.modalButton, styles.cancelButton]}
+              onPress={() => setShowSubmitModal(false)}
+            >
+              <Text style={styles.cancelButtonText}>Cancel</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+              style={[styles.modalButton, styles.submitButton]}
+              onPress={submitVerification}
+              disabled={loading}
+            >
+              <Text style={styles.submitButtonText}>
+                {loading ? 'Submitting...' : 'Submit'}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  );
+
   if (loading && !isConnected) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#4CAF50" />
-        <Text style={styles.loadingText}>Loading...</Text>
+        <Text style={styles.loadingText}>Initializing GreenMint...</Text>
       </View>
     );
   }
@@ -279,51 +398,39 @@ const GreenMintApp = () => {
       
       {!isConnected ? (
         <View style={styles.welcomeContainer}>
-          <Text style={styles.welcomeText}>Welcome to GreenMint Mobile</Text>
+          <Text style={styles.welcomeText}>Welcome to GreenMint</Text>
           <Text style={styles.welcomeSubtext}>
-            Connect your wallet to start earning NFT rewards for your green activities
+            Join the carbon-neutral revolution and earn rewards for your green activities
           </Text>
           <TouchableOpacity style={styles.connectButton} onPress={connectWallet}>
             <Text style={styles.connectButtonText}>Connect Wallet</Text>
           </TouchableOpacity>
         </View>
       ) : (
-        <ScrollView style={styles.content}>
+        <>
           <View style={styles.userInfo}>
             <Text style={styles.addressText}>
-              Connected: {userAddress.substring(0, 6)}...{userAddress.substring(-4)}
+              {Web3Service.formatAddress(userAddress)}
             </Text>
           </View>
           
           <View style={styles.tabContainer}>
-            <TouchableOpacity
-              style={[styles.tab, activeTab === 'nfts' && styles.activeTab]}
-              onPress={() => setActiveTab('nfts')}
-            >
-              <Text style={[styles.tabText, activeTab === 'nfts' && styles.activeTabText]}>
-                NFTs
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.tab, activeTab === 'verifications' && styles.activeTab]}
-              onPress={() => setActiveTab('verifications')}
-            >
-              <Text style={[styles.tabText, activeTab === 'verifications' && styles.activeTabText]}>
-                Verify
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.tab, activeTab === 'leaderboard' && styles.activeTab]}
-              onPress={() => setActiveTab('leaderboard')}
-            >
-              <Text style={[styles.tabText, activeTab === 'leaderboard' && styles.activeTabText]}>
-                Leaderboard
-              </Text>
-            </TouchableOpacity>
+            {['dashboard', 'nfts', 'verifications', 'leaderboard'].map((tab) => (
+              <TouchableOpacity
+                key={tab}
+                style={[styles.tab, activeTab === tab && styles.activeTab]}
+                onPress={() => setActiveTab(tab)}
+              >
+                <Text style={[styles.tabText, activeTab === tab && styles.activeTabText]}>
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </Text>
+              </TouchableOpacity>
+            ))}
           </View>
           
           {renderTabContent()}
-        </ScrollView>
+          {renderSubmitModal()}
+        </>
       )}
     </View>
   );
@@ -378,7 +485,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   welcomeText: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#333',
     textAlign: 'center',
@@ -406,9 +513,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
-  },
-  content: {
-    flex: 1,
   },
   userInfo: {
     backgroundColor: '#fff',
@@ -438,7 +542,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#4CAF50',
   },
   tabText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#666',
     fontWeight: '500',
   },
@@ -451,10 +555,85 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 15,
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  statCard: {
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    flex: 1,
+    marginHorizontal: 5,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  statNumber: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#4CAF50',
+  },
+  statLabel: {
+    fontSize: 12,
+    color: '#666',
+    marginTop: 5,
+  },
+  networkInfo: {
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 20,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  networkTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
+  },
+  networkDetails: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  networkText: {
+    fontSize: 12,
+    color: '#666',
+  },
+  quickActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  actionButton: {
+    backgroundColor: '#4CAF50',
+    padding: 15,
+    borderRadius: 10,
+    flex: 1,
+    marginHorizontal: 5,
+    alignItems: 'center',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  actionButtonText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
   nftItem: {
     backgroundColor: 'white',
@@ -471,8 +650,9 @@ const styles = StyleSheet.create({
   nftImage: {
     width: 60,
     height: 60,
-    borderRadius: 30,
+    borderRadius: 8,
     marginRight: 15,
+    backgroundColor: '#f0f0f0',
   },
   nftDetails: {
     flex: 1,
@@ -492,28 +672,13 @@ const styles = StyleSheet.create({
     color: '#999',
     marginTop: 5,
   },
-  inputContainer: {
-    marginBottom: 20,
+  nftAttributes: {
+    marginTop: 5,
   },
-  input: {
-    backgroundColor: 'white',
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 10,
-    fontSize: 16,
-    borderWidth: 1,
-    borderColor: '#e0e0e0',
-  },
-  submitButton: {
-    backgroundColor: '#4CAF50',
-    padding: 15,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  submitButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
+  nftAttribute: {
+    fontSize: 12,
+    color: '#4CAF50',
+    marginTop: 2,
   },
   verificationItem: {
     backgroundColor: 'white',
@@ -526,21 +691,30 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
+  verificationHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
   verificationActivity: {
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: 'bold',
     color: '#333',
-    fontWeight: '500',
   },
   verificationHash: {
     fontSize: 12,
     color: '#666',
-    marginTop: 5,
+    marginBottom: 10,
   },
   verificationStatus: {
-    marginTop: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+    backgroundColor: '#f0f0f0',
   },
   statusText: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
   },
   verified: {
@@ -552,23 +726,16 @@ const styles = StyleSheet.create({
   pending: {
     color: '#ff9800',
   },
+  rejectionContainer: {
+    backgroundColor: '#ffebee',
+    padding: 10,
+    borderRadius: 8,
+    marginTop: 10,
+  },
   rejectionReason: {
     fontSize: 12,
     color: '#f44336',
-    marginTop: 5,
     fontStyle: 'italic',
-  },
-  creditsContainer: {
-    backgroundColor: '#4CAF50',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
-    alignItems: 'center',
-  },
-  creditsText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   leaderboardItem: {
     backgroundColor: 'white',
@@ -576,7 +743,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     elevation: 2,
     shadowColor: '#000',
@@ -585,26 +751,116 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   leaderboardRank: {
-    fontSize: 16,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#4CAF50',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  rankNumber: {
+    color: 'white',
     fontWeight: 'bold',
-    color: '#4CAF50',
+    fontSize: 16,
+  },
+  leaderboardInfo: {
+    flex: 1,
   },
   leaderboardAddress: {
-    fontSize: 14,
+    fontSize: 16,
     color: '#333',
-    flex: 1,
-    textAlign: 'center',
+    fontWeight: '500',
   },
   leaderboardCredits: {
     fontSize: 14,
     color: '#666',
-    fontWeight: '500',
+    marginTop: 2,
+  },
+  currentUserBadge: {
+    backgroundColor: '#4CAF50',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  currentUserText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  emptyState: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 50,
   },
   emptyText: {
-    textAlign: 'center',
+    fontSize: 18,
     color: '#666',
-    fontStyle: 'italic',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  emptySubtext: {
+    fontSize: 14,
+    color: '#999',
+    textAlign: 'center',
+    lineHeight: 20,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 20,
+    width: '90%',
+    maxWidth: 400,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  modalInput: {
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 15,
+    fontSize: 16,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 20,
+  },
+  modalButton: {
+    flex: 1,
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginHorizontal: 5,
+  },
+  cancelButton: {
+    backgroundColor: '#f5f5f5',
+  },
+  submitButton: {
+    backgroundColor: '#4CAF50',
+  },
+  cancelButtonText: {
+    color: '#666',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  submitButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

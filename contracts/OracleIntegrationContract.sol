@@ -24,8 +24,8 @@ contract OracleIntegrationContract is ChainlinkClient, AccessControl {
         jobId = _jobId;
         fee = _fee;
         backendAddress = _backendAddress;
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(ORACLE_ROLE, msg.sender);
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(ORACLE_ROLE, msg.sender);
     }
 
     function requestCarbonData(address _user) external returns (bytes32 requestId) {

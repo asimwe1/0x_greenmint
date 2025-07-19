@@ -12,8 +12,8 @@ contract IPFSStorageContract is AccessControl {
 
     constructor(address _backendAddress) {
         backendAddress = _backendAddress;
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(UPLOADER_ROLE, msg.sender);
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(UPLOADER_ROLE, msg.sender);
     }
 
     function uploadIpfsHash(string memory _ipfsHash) external {
